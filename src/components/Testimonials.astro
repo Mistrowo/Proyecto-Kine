@@ -1,0 +1,174 @@
+---
+const testimonials = [
+  {
+    name: 'Carolina M.',
+    treatment: 'Post Operatorio',
+    text: 'Después de mi cirugía, el tratamiento de recuperación fue fundamental. En pocas sesiones noté una reducción increíble del edema y las cicatrices mejoraron muchísimo.',
+    rating: 5,
+    avatar: 'C'
+  },
+  {
+    name: 'Valentina R.',
+    treatment: 'Peeling Ekseption',
+    text: 'Tenía manchas por melasma hace años. El peeling White Up+ fue un antes y después. Mi piel luce más uniforme y radiante. Muy recomendado.',
+    rating: 5,
+    avatar: 'V'
+  },
+  {
+    name: 'Andrea S.',
+    treatment: 'Rejuvenecimiento Facial',
+    text: 'La atención es espectacular, muy personalizada. Me explicaron todo el proceso y los resultados superaron mis expectativas. Se nota el profesionalismo.',
+    rating: 5,
+    avatar: 'A'
+  }
+];
+---
+
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <span class="section-label">Testimonios</span>
+      <h2 class="section-title">Lo que dicen<br/><span class="text-accent">nuestras pacientes</span></h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial, index) => (
+        <article class="testimonial-card reveal" style={`animation-delay: ${index * 150}ms`}>
+          <div class="testimonial-rating">
+            {[...Array(testimonial.rating)].map(() => (
+              <span class="star">★</span>
+            ))}
+          </div>
+          
+          <blockquote class="testimonial-text">
+            "{testimonial.text}"
+          </blockquote>
+          
+          <div class="testimonial-author">
+            <div class="author-avatar">{testimonial.avatar}</div>
+            <div class="author-info">
+              <span class="author-name">{testimonial.name}</span>
+              <span class="author-treatment">{testimonial.treatment}</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <div class="testimonials-cta reveal">
+      <p class="cta-text">¿Lista para lucir tu mejor versión?</p>
+      <a href="#contacto" class="btn btn-primary">Agenda tu Consulta</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: var(--space-5xl) 0;
+    background: var(--bg-secondary);
+  }
+  
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+  
+  .testimonial-card {
+    background: var(--bg-card);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-smooth);
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .testimonial-rating {
+    margin-bottom: var(--space-lg);
+  }
+  
+  .star {
+    color: var(--color-warning);
+    font-size: var(--text-lg);
+    margin-right: 2px;
+  }
+  
+  .testimonial-text {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-style: italic;
+    color: var(--color-primary);
+    line-height: 1.8;
+    margin-bottom: var(--space-xl);
+    border: none;
+    padding: 0;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--color-rose) 0%, var(--color-rose-dark) 100%);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .author-name {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+  }
+  
+  .author-treatment {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+  }
+  
+  .testimonials-cta {
+    text-align: center;
+    margin-top: var(--space-4xl);
+    padding-top: var(--space-3xl);
+    border-top: 1px solid var(--bg-tertiary);
+  }
+  
+  .cta-text {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xl);
+  }
+  
+  @media (max-width: 992px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>

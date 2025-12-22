@@ -1,0 +1,256 @@
+---
+const treatments = [
+  {
+    name: 'Peeling White Up+ Ekseption',
+    description: 'Peeling orgánico despigmentante con ácido tranexámico. Ideal para rosácea, melasma y manchas.',
+    price: '$35.000',
+    originalPrice: '$38.500',
+    duration: '1 sesión',
+    highlight: true,
+    badge: 'Popular'
+  },
+  {
+    name: 'Drenaje Linfático Manual',
+    description: 'Técnica especializada para reducir edema, mejorar circulación y acelerar la recuperación post operatoria.',
+    price: '$30.000',
+    originalPrice: null,
+    duration: '60 min',
+    highlight: false,
+    badge: null
+  },
+  {
+    name: 'Tratamiento Post Quirúrgico',
+    description: 'Protocolo integral para recuperación de cirugías. Control de fibrosis, cicatrización y edema.',
+    price: '$40.000',
+    originalPrice: null,
+    duration: '60-90 min',
+    highlight: false,
+    badge: 'Recomendado'
+  },
+  {
+    name: 'Radiofrecuencia Facial',
+    description: 'Estimula colágeno y elastina para una piel más firme. Reduce arrugas y mejora la textura.',
+    price: '$45.000',
+    originalPrice: null,
+    duration: '45 min',
+    highlight: false,
+    badge: null
+  },
+  {
+    name: 'Tratamiento Reductivo Corporal',
+    description: 'Combinación de técnicas para reducción de medidas, celulitis y remodelación corporal.',
+    price: '$50.000',
+    originalPrice: null,
+    duration: '60 min',
+    highlight: false,
+    badge: null
+  },
+  {
+    name: 'Pack Post Operatorio (5 sesiones)',
+    description: 'Programa completo de recuperación quirúrgica con seguimiento personalizado.',
+    price: '$180.000',
+    originalPrice: '$200.000',
+    duration: '5 sesiones',
+    highlight: true,
+    badge: 'Ahorra 10%'
+  }
+];
+---
+
+<section class="treatments" id="tratamientos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Tratamientos</span>
+      <h2 class="section-title">Nuestros<br/><span class="text-accent">procedimientos</span></h2>
+      <p class="section-subtitle">
+        Tratamientos especializados con precios transparentes. 
+        Agenda tu evaluación gratuita.
+      </p>
+    </div>
+    
+    <div class="treatments-grid">
+      {treatments.map((treatment, index) => (
+        <article class={`treatment-card reveal ${treatment.highlight ? 'highlight' : ''}`} style={`animation-delay: ${index * 100}ms`}>
+          {treatment.badge && (
+            <span class="treatment-badge">{treatment.badge}</span>
+          )}
+          
+          <div class="treatment-header">
+            <h3 class="treatment-name">{treatment.name}</h3>
+            <span class="treatment-duration">{treatment.duration}</span>
+          </div>
+          
+          <p class="treatment-description">{treatment.description}</p>
+          
+          <div class="treatment-footer">
+            <div class="treatment-price">
+              {treatment.originalPrice && (
+                <span class="price-original">{treatment.originalPrice}</span>
+              )}
+              <span class="price-current">{treatment.price}</span>
+            </div>
+            
+            <a href="#contacto" class="treatment-cta">
+              Reservar
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M5 10L9 7L5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <div class="treatments-note reveal">
+      <p>
+        * Los precios pueden variar según evaluación. Consulta por packs y promociones especiales.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .treatments {
+    padding: var(--space-5xl) 0;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--color-rose-light) 100%);
+  }
+  
+  .treatments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+  
+  .treatment-card {
+    background: var(--bg-card);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--bg-tertiary);
+    position: relative;
+    transition: all var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .treatment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent-light);
+  }
+  
+  .treatment-card.highlight {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md), 0 0 0 1px var(--color-accent-light);
+  }
+  
+  .treatment-badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+  }
+  
+  .treatment-header {
+    margin-bottom: var(--space-md);
+  }
+  
+  .treatment-name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+    padding-right: var(--space-4xl);
+  }
+  
+  .treatment-duration {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  .treatment-description {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .treatment-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--bg-tertiary);
+  }
+  
+  .treatment-price {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .price-original {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    text-decoration: line-through;
+    line-height: 1;
+  }
+  
+  .price-current {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+  
+  .treatment-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-accent);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+  }
+  
+  .treatment-cta:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+  
+  .treatments-note {
+    text-align: center;
+    margin-top: var(--space-2xl);
+  }
+  
+  .treatments-note p {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    font-style: italic;
+  }
+  
+  @media (max-width: 992px) {
+    .treatments-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .treatments-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

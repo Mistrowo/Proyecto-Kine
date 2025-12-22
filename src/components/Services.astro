@@ -1,0 +1,216 @@
+---
+const services = [
+  {
+    icon: '🏥',
+    title: 'Pre Operatorio',
+    description: 'Preparación integral de tejidos para optimizar resultados quirúrgicos. Fortalecemos la piel y mejoramos la circulación.',
+    features: ['Preparación de piel', 'Mejora circulatoria', 'Reducción de riesgos']
+  },
+  {
+    icon: '✨',
+    title: 'Post Operatorio',
+    description: 'Recuperación acelerada y tratamiento de complicaciones como edema, fibrosis y cicatrización postquirúrgica.',
+    features: ['Control de edema', 'Tratamiento de fibrosis', 'Cicatrización óptima']
+  },
+  {
+    icon: '💆‍♀️',
+    title: 'Rejuvenecimiento Facial',
+    description: 'Tratamientos no invasivos para restaurar la juventud y luminosidad de tu rostro con tecnología de vanguardia.',
+    features: ['Radiofrecuencia', 'Drenaje linfático', 'Estimulación celular']
+  },
+  {
+    icon: '🌿',
+    title: 'Peeling Especializado',
+    description: 'Peeling orgánico White Up+ Ekseption para tratamiento de rosácea, melasma y manchas. Resultados visibles.',
+    features: ['Ácido tranexámico', 'Despigmentación', 'Piel renovada']
+  },
+  {
+    icon: '🎯',
+    title: 'Tratamientos Corporales',
+    description: 'Reducción de medidas, eliminación de celulitis y remodelación corporal con aparatología certificada.',
+    features: ['Reducción de grasa', 'Celulitis', 'Flacidez']
+  },
+  {
+    icon: '💎',
+    title: 'Kinesiología Dermatofuncional',
+    description: 'Especialidad que trata alteraciones de la piel de forma funcional, recuperando la salud de tus tejidos.',
+    features: ['Heridas crónicas', 'Quemaduras', 'Cicatrices']
+  }
+];
+---
+
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Nuestros Servicios</span>
+      <h2 class="section-title">Tratamientos<br/><span class="text-accent">especializados</span></h2>
+      <p class="section-subtitle">
+        Combinamos ciencia y estética para ofrecerte tratamientos personalizados 
+        que transforman tu bienestar físico.
+      </p>
+    </div>
+    
+    <div class="services-grid">
+      {services.map((service, index) => (
+        <article class="service-card reveal" style={`animation-delay: ${index * 100}ms`}>
+          <div class="service-icon">{service.icon}</div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+          <ul class="service-features">
+            {service.features.map((feature) => (
+              <li class="service-feature">
+                <span class="feature-check">✓</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <a href="#contacto" class="service-link">
+            Más información
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding: var(--space-5xl) 0;
+    background: var(--bg-secondary);
+    position: relative;
+  }
+  
+  .services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-light), transparent);
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+  
+  .service-card {
+    background: var(--bg-card);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-smooth);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .service-icon {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-lg);
+    display: inline-block;
+    transition: transform var(--transition-base);
+  }
+  
+  .service-card:hover .service-icon {
+    transform: scale(1.1);
+  }
+  
+  .service-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+  }
+  
+  .service-description {
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .service-features {
+    list-style: none;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .service-feature {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-secondary);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .feature-check {
+    color: var(--color-success);
+    font-weight: 600;
+  }
+  
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-accent);
+    transition: all var(--transition-base);
+  }
+  
+  .service-link:hover {
+    color: var(--color-accent-dark);
+    gap: var(--space-sm);
+  }
+  
+  .service-link svg {
+    transition: transform var(--transition-base);
+  }
+  
+  .service-link:hover svg {
+    transform: translateX(4px);
+  }
+  
+  @media (max-width: 992px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+      padding: var(--space-xl);
+    }
+  }
+</style>

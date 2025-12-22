@@ -1,22 +1,77 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Fisiodermy Estética Avanzada - Especialistas en tratamientos pre y post operatorio, recuperación quirúrgica y bienestar físico. Luce tu mejor versión." 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="fisioterapia dermatofuncional, estética avanzada, post operatorio, pre operatorio, cicatrización, edema, peeling, Chile" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CL" />
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{title}</title>
+</head>
+<body>
+  <slot />
+  
+  <script>
+    // Scroll Reveal Animation
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const target = href ? document.querySelector(href) : null;
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  @import '../styles/global.css';
 </style>
