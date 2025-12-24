@@ -1,65 +1,86 @@
 ---
-// Hero Component - Fisiodermy
+// Hero Component - Fisiodermy - Con Carrusel Visible
+const slides = [
+  {
+    title: 'Luce tu',
+    highlight: 'mejor versión',
+    text: 'Especialistas en fisioterapia dermatofuncional, tratamientos pre y post operatorio, recuperación quirúrgica y bienestar físico.'
+  },
+  {
+    title: 'Tratamientos',
+    highlight: 'Post Operatorios',
+    text: 'Recuperación acelerada con técnicas especializadas. Minimizamos complicaciones como edema, fibrosis y cicatrización.'
+  },
+  {
+    title: 'Rejuvenecimiento',
+    highlight: 'Facial Avanzado',
+    text: 'Tratamientos no invasivos con tecnología de vanguardia. Peeling orgánico White Up+ Ekseption para resultados excepcionales.'
+  }
+];
 ---
 
 <section class="hero" id="inicio">
-  <!-- Background Effects -->
+  <!-- Background -->
   <div class="hero-bg"></div>
-  <div class="hero-pattern"></div>
-  <div class="hero-gradient-orb hero-gradient-orb-1"></div>
-  <div class="hero-gradient-orb hero-gradient-orb-2"></div>
+  <div class="hero-overlay"></div>
   
-  <!-- Decorative Lines -->
-  <div class="hero-lines">
-    <div class="hero-line hero-line-1"></div>
-    <div class="hero-line hero-line-2"></div>
-    <div class="hero-line hero-line-3"></div>
-    <div class="hero-line hero-line-4"></div>
-  </div>
-
-  <!-- Floating Elements -->
-  <div class="hero-float hero-float-1"></div>
-  <div class="hero-float hero-float-2"></div>
-  
-  <div class="container">
-    <div class="hero-content">
-      <span class="hero-label">
-        <span class="hero-label-line"></span>
-        Estética Avanzada
-        <span class="hero-label-line"></span>
-      </span>
-      
-      <h1 class="hero-title">
-        Luce tu <em class="gold-shimmer">mejor versión</em>
-      </h1>
-      
-      <p class="hero-text">
-        Especialistas en fisioterapia dermatofuncional, tratamientos pre y post operatorio, 
-        recuperación quirúrgica y bienestar físico. Resultados excepcionales con atención personalizada.
-      </p>
-      
-      <div class="hero-buttons">
-        <a href="#contacto" class="btn btn-gold">
-          <span>Agendar Consulta</span>
-        </a>
-        <a href="#servicios" class="btn btn-outline">
-          <span>Explorar Servicios</span>
-        </a>
+  <!-- Slider -->
+  <div class="hero-slider">
+    {slides.map((slide, index) => (
+      <div class={`hero-slide ${index === 0 ? 'active' : ''}`} data-slide={index}>
+        <div class="container">
+          <div class="hero-content">
+            <span class="hero-label">
+              <span class="hero-label-line"></span>
+              Estética Avanzada
+              <span class="hero-label-line"></span>
+            </span>
+            
+            <h1 class="hero-title">
+              {slide.title} <em class="gold-shimmer">{slide.highlight}</em>
+            </h1>
+            
+            <p class="hero-text">{slide.text}</p>
+            
+            <div class="hero-buttons">
+              <a href="#contacto" class="btn btn-gold">Agendar Consulta</a>
+              <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    ))}
   </div>
   
-  <!-- Visual Frame -->
-  <div class="hero-visual">
-    <div class="hero-visual-frame">
-      <div class="hero-visual-frame-inner"></div>
+  <!-- Slider Controls -->
+  <div class="hero-controls">
+    <button class="hero-prev" aria-label="Anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <div class="hero-dots">
+      {slides.map((_, index) => (
+        <button class={`hero-dot ${index === 0 ? 'active' : ''}`} data-dot={index} aria-label={`Slide ${index + 1}`}></button>
+      ))}
     </div>
-    <div class="hero-visual-content">
-      <span>Imagen Hero</span>
-    </div>
-    <div class="hero-visual-badge">
-      <span class="hero-visual-badge-icon">✦</span>
-      <span class="hero-visual-badge-text">Premium</span>
+    <button class="hero-next" aria-label="Siguiente">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Progress Bar -->
+  <div class="hero-progress">
+    <div class="hero-progress-bar"></div>
+  </div>
+  
+  <!-- Side Info -->
+  <div class="hero-side-info">
+    <div class="hero-side-item">
+      <span class="hero-side-number">01</span>
+      <span class="hero-side-text">/ 03</span>
     </div>
   </div>
   
@@ -68,157 +89,180 @@
     <span>Scroll</span>
     <div class="hero-scroll-line"></div>
   </div>
+  
+  <!-- Decorative Elements -->
+  <div class="hero-decor hero-decor-1"></div>
+  <div class="hero-decor hero-decor-2"></div>
 </section>
+
+<script>
+  // Hero Slider
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  const prevBtn = document.querySelector('.hero-prev');
+  const nextBtn = document.querySelector('.hero-next');
+  const progressBar = document.querySelector('.hero-progress-bar');
+  const sideNumber = document.querySelector('.hero-side-number');
+  
+  let currentSlide = 0;
+  let slideInterval;
+  const intervalTime = 6000;
+  
+  function goToSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    currentSlide = index;
+    if (currentSlide >= slides.length) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = slides.length - 1;
+    
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    
+    if (sideNumber) {
+      sideNumber.textContent = String(currentSlide + 1).padStart(2, '0');
+    }
+    
+    resetProgress();
+  }
+  
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+  
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
+  
+  function resetProgress() {
+    if (progressBar) {
+      progressBar.style.animation = 'none';
+      progressBar.offsetHeight;
+      progressBar.style.animation = `progressAnim ${intervalTime}ms linear`;
+    }
+  }
+  
+  function startSlider() {
+    slideInterval = setInterval(nextSlide, intervalTime);
+    resetProgress();
+  }
+  
+  function stopSlider() {
+    clearInterval(slideInterval);
+  }
+  
+  prevBtn?.addEventListener('click', () => {
+    stopSlider();
+    prevSlide();
+    startSlider();
+  });
+  
+  nextBtn?.addEventListener('click', () => {
+    stopSlider();
+    nextSlide();
+    startSlider();
+  });
+  
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      stopSlider();
+      goToSlide(index);
+      startSlider();
+    });
+  });
+  
+  startSlider();
+  
+  const heroSection = document.querySelector('.hero');
+  heroSection?.addEventListener('mouseenter', stopSlider);
+  heroSection?.addEventListener('mouseleave', startSlider);
+</script>
 
 <style>
   .hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: var(--black);
     position: relative;
     overflow: hidden;
+    background: var(--black);
   }
 
-  /* Background Effects */
   .hero-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--black) 0%, var(--black-rich) 50%, var(--black-soft) 100%);
+    background: 
+      radial-gradient(ellipse at 30% 20%, rgba(201, 162, 39, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(201, 162, 39, 0.1) 0%, transparent 40%),
+      linear-gradient(135deg, var(--black) 0%, var(--black-rich) 50%, var(--black-soft) 100%);
   }
 
-  .hero-pattern {
+  .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.02;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
-  .hero-gradient-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.15;
+  .hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100vh;
   }
 
-  .hero-gradient-orb-1 {
-    top: 10%;
-    left: 10%;
-    width: 500px;
-    height: 500px;
-    background: var(--gold);
-    animation: float 8s ease-in-out infinite;
-  }
-
-  .hero-gradient-orb-2 {
-    bottom: 10%;
-    right: 10%;
-    width: 400px;
-    height: 400px;
-    background: var(--gold-dark);
-    animation: float 10s ease-in-out infinite reverse;
-  }
-
-  /* Decorative Lines */
-  .hero-lines {
+  .hero-slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
   }
 
-  .hero-line {
-    position: absolute;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0.1;
+  .hero-slide.active {
+    opacity: 1;
+    visibility: visible;
   }
 
-  .hero-line-1 {
-    top: 20%;
-    left: 0;
-    width: 35%;
-    height: 1px;
-    animation: fadeInLeft 1s ease 0.5s both;
+  .hero-slide.active .hero-label {
+    animation: fadeInUp 0.8s ease 0.2s both;
   }
 
-  .hero-line-2 {
-    bottom: 25%;
-    right: 0;
-    width: 30%;
-    height: 1px;
-    animation: fadeInRight 1s ease 0.7s both;
+  .hero-slide.active .hero-title {
+    animation: fadeInUp 0.8s ease 0.4s both;
   }
 
-  .hero-line-3 {
-    top: 15%;
-    right: 20%;
-    width: 1px;
-    height: 15%;
-    background: linear-gradient(180deg, transparent, var(--gold), transparent);
-    animation: fadeInDown 1s ease 0.9s both;
+  .hero-slide.active .hero-text {
+    animation: fadeInUp 0.8s ease 0.6s both;
   }
 
-  .hero-line-4 {
-    bottom: 20%;
-    left: 15%;
-    width: 1px;
-    height: 10%;
-    background: linear-gradient(180deg, transparent, var(--gold), transparent);
-    animation: fadeInUp 1s ease 1.1s both;
+  .hero-slide.active .hero-buttons {
+    animation: fadeInUp 0.8s ease 0.8s both;
   }
 
-  /* Floating Elements */
-  .hero-float {
-    position: absolute;
-    border: 1px solid rgba(201, 162, 39, 0.2);
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .hero-float-1 {
-    top: 30%;
-    right: 25%;
-    width: 80px;
-    height: 80px;
-    transform: rotate(45deg);
-    animation-delay: 0s;
-  }
-
-  .hero-float-2 {
-    bottom: 35%;
-    left: 20%;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    animation-delay: 2s;
-  }
-
-  /* Content */
   .hero-content {
+    max-width: 800px;
     position: relative;
     z-index: 2;
-    max-width: 750px;
-    padding: 160px 0 120px;
   }
 
   .hero-label {
     display: inline-flex;
     align-items: center;
     gap: 20px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 35px;
-    animation: fadeInUp 1s ease 0.3s both;
+    margin-bottom: 30px;
   }
 
   .hero-label-line {
@@ -228,122 +272,158 @@
   }
 
   .hero-title {
-    font-size: clamp(48px, 7vw, 85px);
+    font-size: clamp(42px, 6vw, 80px);
     font-weight: 300;
     color: var(--white);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     letter-spacing: -2px;
     line-height: 1.1;
-    animation: fadeInUp 1s ease 0.5s both;
   }
 
   .hero-title em {
     font-style: italic;
     font-weight: 400;
+    display: block;
   }
 
   .hero-text {
     font-size: 17px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 50px;
+    margin-bottom: 45px;
     max-width: 550px;
     line-height: 1.9;
-    animation: fadeInUp 1s ease 0.7s both;
   }
 
   .hero-buttons {
     display: flex;
-    gap: 25px;
-    animation: fadeInUp 1s ease 0.9s both;
+    gap: 20px;
   }
 
-  /* Visual Frame */
-  .hero-visual {
+  /* Controls */
+  .hero-controls {
     position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 420px;
-    height: 520px;
-    animation: fadeIn 1.5s ease 1s both;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
   }
 
-  .hero-visual-frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(201, 162, 39, 0.3);
-    animation: borderGlow 3s ease-in-out infinite;
-  }
-
-  .hero-visual-frame-inner {
-    position: absolute;
-    top: 25px;
-    left: 25px;
-    right: -25px;
-    bottom: -25px;
-    border: 1px solid rgba(201, 162, 39, 0.15);
-  }
-
-  .hero-visual-content {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
-    background: linear-gradient(135deg, var(--black-soft) 0%, var(--black-medium) 100%);
+  .hero-prev,
+  .hero-next {
+    width: 55px;
+    height: 55px;
+    background: rgba(201, 162, 39, 0.1);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
   }
 
-  .hero-visual-content span {
-    font-family: var(--font-display);
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.15);
-  }
-
-  .hero-visual-badge {
-    position: absolute;
-    bottom: -20px;
-    left: -20px;
+  .hero-prev:hover,
+  .hero-next:hover {
     background: var(--gold);
-    padding: 20px 25px;
+    color: var(--black);
+  }
+
+  .hero-prev svg,
+  .hero-next svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .hero-dots {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    animation: scaleIn 0.6s ease 1.5s both;
+    gap: 15px;
+    padding: 0 15px;
   }
 
-  .hero-visual-badge-icon {
-    font-size: 18px;
-    color: var(--black);
+  .hero-dot {
+    width: 14px;
+    height: 14px;
+    background: transparent;
+    border: 2px solid rgba(201, 162, 39, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
   }
 
-  .hero-visual-badge-text {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--black);
+  .hero-dot:hover {
+    border-color: var(--gold);
+    transform: scale(1.1);
+  }
+
+  .hero-dot.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.2);
+  }
+
+  /* Progress Bar */
+  .hero-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10;
+  }
+
+  .hero-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    width: 0;
+    animation: progressAnim 6000ms linear;
+  }
+
+  @keyframes progressAnim {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  /* Side Info */
+  .hero-side-info {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    z-index: 10;
+  }
+
+  .hero-side-item {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+
+  .hero-side-number {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--gold);
+  }
+
+  .hero-side-text {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.4);
   }
 
   /* Scroll Indicator */
   .hero-scroll {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    animation: fadeIn 1s ease 1.5s both;
+    z-index: 10;
   }
 
   .hero-scroll span {
@@ -355,34 +435,89 @@
 
   .hero-scroll-line {
     width: 1px;
-    height: 60px;
+    height: 50px;
     background: linear-gradient(180deg, var(--gold), transparent);
     animation: pulse 2s ease-in-out infinite;
   }
 
-  /* Responsive */
+  /* Decorative */
+  .hero-decor {
+    position: absolute;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    pointer-events: none;
+  }
+
+  .hero-decor-1 {
+    top: 20%;
+    right: 10%;
+    width: 300px;
+    height: 400px;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero-decor-1::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: -20px;
+    bottom: -20px;
+    border: 1px solid rgba(201, 162, 39, 0.1);
+  }
+
+  .hero-decor-2 {
+    bottom: 25%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+    transform: rotate(45deg);
+    animation: float 6s ease-in-out infinite reverse;
+  }
+
   @media (max-width: 1200px) {
-    .hero-visual {
+    .hero-decor {
+      display: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .hero-controls {
+      right: 30px;
+      bottom: 120px;
+    }
+
+    .hero-side-info {
       display: none;
     }
   }
 
   @media (max-width: 768px) {
     .hero-content {
-      padding: 140px 0 100px;
+      padding: 0 20px;
     }
 
     .hero-buttons {
       flex-direction: column;
     }
 
+    .hero-controls {
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 100px;
+    }
+
+    .hero-scroll {
+      display: none;
+    }
+
     .hero-label-line {
       width: 30px;
     }
 
-    .hero-float,
-    .hero-lines {
-      display: none;
+    .hero-prev,
+    .hero-next {
+      width: 48px;
+      height: 48px;
     }
   }
 </style>

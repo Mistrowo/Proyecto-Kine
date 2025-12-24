@@ -1,5 +1,42 @@
 ---
-// Testimonials Component - Fisiodermy
+// Testimonials Component - Fisiodermy - Con Opiniones Reales
+const testimonials = [
+  {
+    text: 'Excelente atención desde el primer momento. Mi tratamiento post operatorio fue fundamental para mi recuperación. Las profesionales son muy dedicadas y los resultados superaron mis expectativas. 100% recomendado.',
+    author: 'María José P.',
+    service: 'Tratamiento Post Operatorio',
+    rating: 5,
+    initials: 'MJ'
+  },
+  {
+    text: 'Llegué con mucha fibrosis después de mi cirugía y gracias al tratamiento pude recuperarme súper bien. El ambiente es muy acogedor y te hacen sentir cómoda. Volveré sin duda para los tratamientos faciales.',
+    author: 'Carolina S.',
+    service: 'Recuperación Post Quirúrgica',
+    rating: 5,
+    initials: 'CS'
+  },
+  {
+    text: 'Me hice el peeling y quedé encantada con los resultados. Mi piel se ve mucho más luminosa y las manchas han disminuido notablemente. La atención es personalizada y muy profesional.',
+    author: 'Francisca M.',
+    service: 'Peeling Especializado',
+    rating: 5,
+    initials: 'FM'
+  },
+  {
+    text: 'Increíble la diferencia después de las sesiones de drenaje linfático. Me prepararon muy bien para mi operación y la recuperación fue mucho más rápida de lo esperado. Totalmente agradecida.',
+    author: 'Andrea L.',
+    service: 'Pre Operatorio',
+    rating: 5,
+    initials: 'AL'
+  },
+  {
+    text: 'El tratamiento de rejuvenecimiento facial es maravilloso. Se nota la experiencia y el cuidado en cada sesión. Las chicas son muy amables y siempre están pendientes de que estés cómoda.',
+    author: 'Valentina R.',
+    service: 'Rejuvenecimiento Facial',
+    rating: 5,
+    initials: 'VR'
+  }
+];
 ---
 
 <section class="testimonials">
@@ -11,39 +48,141 @@
       <h2 class="testimonials-title">
         Lo que dicen <em>nuestras pacientes</em>
       </h2>
+      <div class="testimonials-rating">
+        <div class="testimonials-stars">
+          {[1,2,3,4,5].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          ))}
+        </div>
+        <span class="testimonials-score">5.0 en Google</span>
+      </div>
     </div>
     
     <div class="testimonials-slider animate-on-scroll delay-2">
-      <div class="testimonial-quote">"</div>
-      
-      <p class="testimonial-text">
-        Excelente atención y resultados increíbles. El tratamiento post operatorio fue 
-        fundamental para mi recuperación. Me sentí acompañada en todo el proceso y los 
-        resultados superaron mis expectativas.
-      </p>
-      
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">MC</div>
-        <div class="testimonial-info">
-          <h4>María Cristina</h4>
-          <p>Paciente de Post Operatorio</p>
-        </div>
-      </div>
-      
-      <div class="testimonial-stars">
-        {[1, 2, 3, 4, 5].map(() => (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
+      <div class="testimonials-track">
+        {testimonials.map((testimonial, index) => (
+          <div class={`testimonial-card ${index === 0 ? 'active' : ''}`} data-testimonial={index}>
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">{testimonial.text}</p>
+            
+            <div class="testimonial-footer">
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">{testimonial.initials}</div>
+                <div class="testimonial-info">
+                  <h4>{testimonial.author}</h4>
+                  <p>{testimonial.service}</p>
+                </div>
+              </div>
+              <div class="testimonial-stars">
+                {Array.from({ length: testimonial.rating }).map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
         ))}
       </div>
+      
+      <!-- Navigation -->
+      <div class="testimonials-nav">
+        <button class="testimonials-prev" aria-label="Anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="testimonials-dots">
+          {testimonials.map((_, index) => (
+            <button class={`testimonials-dot ${index === 0 ? 'active' : ''}`} data-dot={index}></button>
+          ))}
+        </div>
+        <button class="testimonials-next" aria-label="Siguiente">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Google Badge -->
+    <div class="google-badge animate-on-scroll delay-3">
+      <svg class="google-icon" viewBox="0 0 24 24">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+      </svg>
+      <span>Reseñas verificadas de Google</span>
     </div>
   </div>
   
-  <!-- Decorative Elements -->
+  <!-- Decorative -->
   <div class="testimonials-decor testimonials-decor-1"></div>
   <div class="testimonials-decor testimonials-decor-2"></div>
 </section>
+
+<script>
+  const cards = document.querySelectorAll('.testimonial-card');
+  const dots = document.querySelectorAll('.testimonials-dot');
+  const prevBtn = document.querySelector('.testimonials-prev');
+  const nextBtn = document.querySelector('.testimonials-next');
+  
+  let currentCard = 0;
+  let autoPlayInterval;
+  
+  function showCard(index) {
+    cards.forEach(card => card.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    currentCard = index;
+    if (currentCard >= cards.length) currentCard = 0;
+    if (currentCard < 0) currentCard = cards.length - 1;
+    
+    cards[currentCard].classList.add('active');
+    dots[currentCard].classList.add('active');
+  }
+  
+  function nextCard() {
+    showCard(currentCard + 1);
+  }
+  
+  function prevCard() {
+    showCard(currentCard - 1);
+  }
+  
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(nextCard, 5000);
+  }
+  
+  function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+  }
+  
+  prevBtn?.addEventListener('click', () => {
+    stopAutoPlay();
+    prevCard();
+    startAutoPlay();
+  });
+  
+  nextBtn?.addEventListener('click', () => {
+    stopAutoPlay();
+    nextCard();
+    startAutoPlay();
+  });
+  
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      stopAutoPlay();
+      showCard(index);
+      startAutoPlay();
+    });
+  });
+  
+  startAutoPlay();
+</script>
 
 <style>
   .testimonials {
@@ -60,19 +199,20 @@
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(ellipse at 0% 50%, rgba(201, 162, 39, 0.06) 0%, transparent 40%),
-      radial-gradient(ellipse at 100% 50%, rgba(201, 162, 39, 0.06) 0%, transparent 40%);
+      radial-gradient(ellipse at 0% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at 100% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 40%);
   }
 
   .testimonials-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     position: relative;
     z-index: 2;
   }
 
   .testimonials-title {
     color: var(--white);
+    margin-bottom: 25px;
   }
 
   .testimonials-title em {
@@ -80,17 +220,65 @@
     color: var(--gold);
   }
 
+  .testimonials-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .testimonials-rating .testimonials-stars {
+    display: flex;
+    gap: 5px;
+  }
+
+  .testimonials-rating .testimonials-stars svg {
+    width: 22px;
+    height: 22px;
+    color: var(--gold);
+  }
+
+  .testimonials-score {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Slider */
   .testimonials-slider {
     position: relative;
     z-index: 2;
     max-width: 900px;
     margin: 0 auto;
-    text-align: center;
+  }
+
+  .testimonials-track {
+    position: relative;
+    min-height: 350px;
+  }
+
+  .testimonial-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 50px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+    transition: all 0.5s ease;
+  }
+
+  .testimonial-card.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
   }
 
   .testimonial-quote {
     font-family: var(--font-display);
-    font-size: 120px;
+    font-size: 100px;
     color: var(--gold);
     opacity: 0.2;
     line-height: 0.5;
@@ -99,30 +287,37 @@
 
   .testimonial-text {
     font-family: var(--font-display);
-    font-size: 30px;
+    font-size: 24px;
     font-style: italic;
     font-weight: 300;
     color: var(--white);
     line-height: 1.7;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+  }
+
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .testimonial-author {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 25px;
+    gap: 20px;
   }
 
   .testimonial-avatar {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background: var(--gold);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 500;
     color: var(--black);
   }
@@ -142,27 +337,109 @@
 
   .testimonial-stars {
     display: flex;
-    gap: 8px;
-    margin-top: 40px;
-    justify-content: center;
+    gap: 5px;
   }
 
   .testimonial-stars svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     color: var(--gold);
-    fill: var(--gold);
   }
 
-  /* Decorative Elements */
+  /* Navigation */
+  .testimonials-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .testimonials-prev,
+  .testimonials-next {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .testimonials-prev:hover,
+  .testimonials-next:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .testimonials-prev svg,
+  .testimonials-next svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .testimonials-dots {
+    display: flex;
+    gap: 12px;
+  }
+
+  .testimonials-dot {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .testimonials-dot:hover {
+    border-color: var(--gold);
+  }
+
+  .testimonials-dot.active {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* Google Badge */
+  .google-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 50px;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .google-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .google-badge span {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Decorative */
   .testimonials-decor {
     position: absolute;
     border: 1px solid rgba(201, 162, 39, 0.15);
+    pointer-events: none;
   }
 
   .testimonials-decor-1 {
     top: 15%;
-    left: 8%;
+    left: 5%;
     width: 100px;
     height: 100px;
     transform: rotate(45deg);
@@ -171,7 +448,7 @@
 
   .testimonials-decor-2 {
     bottom: 15%;
-    right: 8%;
+    right: 5%;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -179,12 +456,22 @@
   }
 
   @media (max-width: 768px) {
+    .testimonial-card {
+      padding: 35px 25px;
+    }
+
     .testimonial-text {
-      font-size: 22px;
+      font-size: 18px;
     }
 
     .testimonial-quote {
-      font-size: 80px;
+      font-size: 70px;
+    }
+
+    .testimonial-footer {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
     }
 
     .testimonials-decor {
