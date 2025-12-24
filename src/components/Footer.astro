@@ -1,0 +1,224 @@
+---
+// Footer Component - Fisiodermy
+const currentYear = new Date().getFullYear();
+
+const serviceLinks = [
+  { name: 'Pre Operatorio', href: '#servicios' },
+  { name: 'Post Operatorio', href: '#servicios' },
+  { name: 'Rejuvenecimiento Facial', href: '#servicios' },
+  { name: 'Peeling Especializado', href: '#servicios' },
+  { name: 'Tratamientos Corporales', href: '#servicios' }
+];
+
+const companyLinks = [
+  { name: 'Nosotros', href: '#nosotros' },
+  { name: 'Proceso', href: '#proceso' },
+  { name: 'Contacto', href: '#contacto' },
+  { name: 'Tienda Online', href: 'https://tienda.fisiodermy.cl', external: true }
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          Fisio<span>dermy</span>
+        </a>
+        <p>
+          Especialistas en fisioterapia dermatofuncional y tratamientos estéticos avanzados. 
+          Resultados profesionales con atención personalizada en Santiago, Chile.
+        </p>
+      </div>
+      
+      <div class="footer-column">
+        <h4 class="footer-title">Servicios</h4>
+        <ul class="footer-links">
+          {serviceLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4 class="footer-title">Empresa</h4>
+        <ul class="footer-links">
+          {companyLinks.map((link) => (
+            <li>
+              <a 
+                href={link.href} 
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener' : undefined}
+              >
+                {link.name}
+                {link.external && <span class="external-icon">↗</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4 class="footer-title">Contacto</h4>
+        <ul class="footer-links footer-contact">
+          <li>Santiago, Chile</li>
+          <li>Providencia</li>
+          <li>+56 9 XXXX XXXX</li>
+          <li>contacto@fisiodermy.cl</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© {currentYear} Fisiodermy Estética Avanzada. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos de Servicio</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--black);
+    padding: 100px 0 50px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-brand .logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    display: inline-block;
+    transition: opacity 0.3s;
+  }
+
+  .footer-brand .logo:hover {
+    opacity: 0.8;
+  }
+
+  .footer-brand .logo span {
+    color: var(--gold);
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.9;
+    max-width: 320px;
+  }
+
+  .footer-title {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 35px;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 18px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .footer-links a:hover {
+    color: var(--white);
+    padding-left: 10px;
+  }
+
+  .external-icon {
+    font-size: 10px;
+    opacity: 0.5;
+  }
+
+  .footer-contact li {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .footer-bottom {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 30px;
+  }
+
+  .footer-bottom-links a {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    transition: color 0.3s;
+  }
+
+  .footer-bottom-links a:hover {
+    color: var(--gold);
+  }
+
+  @media (max-width: 992px) {
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .footer-brand p {
+      max-width: 100%;
+    }
+
+    .footer-links a:hover {
+      padding-left: 0;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+  }
+</style>

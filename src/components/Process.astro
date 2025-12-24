@@ -1,0 +1,191 @@
+---
+// Process Component - Fisiodermy
+const steps = [
+  {
+    number: '1',
+    title: 'Evaluación',
+    description: 'Analizamos tu caso de forma personalizada para entender tus necesidades y objetivos.'
+  },
+  {
+    number: '2',
+    title: 'Plan de Tratamiento',
+    description: 'Diseñamos un protocolo específico adaptado a tus requerimientos individuales.'
+  },
+  {
+    number: '3',
+    title: 'Tratamiento',
+    description: 'Aplicamos las técnicas más avanzadas con equipamiento de última generación.'
+  },
+  {
+    number: '4',
+    title: 'Seguimiento',
+    description: 'Monitoreamos tu progreso y ajustamos el tratamiento para resultados óptimos.'
+  }
+];
+---
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="process-header animate-on-scroll">
+      <p class="section-label centered">Cómo Trabajamos</p>
+      <h2 class="process-title">
+        Tu camino hacia el <em>bienestar</em>
+      </h2>
+    </div>
+    
+    <div class="process-steps">
+      <div class="process-line"></div>
+      
+      {steps.map((step, index) => (
+        <div class={`process-step animate-on-scroll delay-${index + 1}`}>
+          <div class="process-step-number">
+            <span>{step.number}</span>
+            <div class="process-step-ring"></div>
+          </div>
+          <h3 class="process-step-title">{step.title}</h3>
+          <p class="process-step-text">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    padding: var(--section-padding) 0;
+    background: var(--white-soft);
+    position: relative;
+  }
+
+  .process-header {
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  .process-title {
+    color: var(--black);
+  }
+
+  .process-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+  }
+
+  .process-line {
+    position: absolute;
+    top: 60px;
+    left: 12%;
+    width: 76%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-step-number {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 35px;
+    background: var(--white);
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.5s var(--transition-smooth);
+  }
+
+  .process-step:hover .process-step-number {
+    border-color: var(--gold);
+    transform: scale(1.08);
+    box-shadow: 0 20px 50px rgba(201, 162, 39, 0.2);
+  }
+
+  .process-step-number span {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--gold);
+    transition: transform 0.5s;
+  }
+
+  .process-step:hover .process-step-number span {
+    transform: scale(1.1);
+  }
+
+  .process-step-ring {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid var(--gold);
+    opacity: 0;
+    transition: all 0.5s var(--transition-smooth);
+  }
+
+  .process-step:hover .process-step-ring {
+    opacity: 0.3;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+
+  .process-step-title {
+    font-size: 22px;
+    color: var(--black);
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+
+  .process-step:hover .process-step-title {
+    color: var(--gold);
+  }
+
+  .process-step-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 992px) {
+    .process-steps {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+    }
+
+    .process-line {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step-number {
+      width: 100px;
+      height: 100px;
+    }
+
+    .process-step-number span {
+      font-size: 42px;
+    }
+  }
+</style>

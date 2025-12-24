@@ -1,0 +1,118 @@
+---
+// Marquee Component - Fisiodermy
+const items = [
+  'Fisioterapia Dermatofuncional',
+  'Pre & Post Operatorio',
+  'Rejuvenecimiento Facial',
+  'Tratamientos Corporales',
+  'Peeling Especializado',
+  'Bienestar Integral'
+];
+---
+
+<section class="marquee-section">
+  <div class="marquee">
+    <div class="marquee-track">
+      {items.map((item) => (
+        <div class="marquee-item">
+          <span>{item}</span>
+          <div class="marquee-dot"></div>
+        </div>
+      ))}
+      {items.map((item) => (
+        <div class="marquee-item">
+          <span>{item}</span>
+          <div class="marquee-dot"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-section {
+    background: var(--black);
+    padding: 35px 0;
+    border-top: 1px solid rgba(201, 162, 39, 0.1);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .marquee-section::before,
+  .marquee-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-section::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--black), transparent);
+  }
+
+  .marquee-section::after {
+    right: 0;
+    background: linear-gradient(-90deg, var(--black), transparent);
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 0 50px;
+    white-space: nowrap;
+  }
+
+  .marquee-item span {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    transition: color 0.3s;
+  }
+
+  .marquee-item:hover span {
+    color: var(--gold);
+  }
+
+  .marquee-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.6;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .marquee-item:hover .marquee-dot {
+    transform: rotate(45deg) scale(1.3);
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .marquee-section {
+      display: none;
+    }
+  }
+</style>

@@ -1,76 +1,105 @@
 ---
+// Services Component - Fisiodermy
 const services = [
   {
-    icon: '🏥',
+    number: '01',
     title: 'Pre Operatorio',
-    description: 'Preparación integral de tejidos para optimizar resultados quirúrgicos. Fortalecemos la piel y mejoramos la circulación.',
-    features: ['Preparación de piel', 'Mejora circulatoria', 'Reducción de riesgos']
+    description: 'Preparación integral de tejidos para optimizar resultados quirúrgicos. Fortalecemos la piel y mejoramos la circulación antes de tu intervención.',
+    icon: 'clock'
   },
   {
-    icon: '✨',
+    number: '02',
     title: 'Post Operatorio',
-    description: 'Recuperación acelerada y tratamiento de complicaciones como edema, fibrosis y cicatrización postquirúrgica.',
-    features: ['Control de edema', 'Tratamiento de fibrosis', 'Cicatrización óptima']
+    description: 'Recuperación acelerada y tratamiento de complicaciones como edema, fibrosis y cicatrización postquirúrgica con técnicas especializadas.',
+    icon: 'activity'
   },
   {
-    icon: '💆‍♀️',
+    number: '03',
     title: 'Rejuvenecimiento Facial',
-    description: 'Tratamientos no invasivos para restaurar la juventud y luminosidad de tu rostro con tecnología de vanguardia.',
-    features: ['Radiofrecuencia', 'Drenaje linfático', 'Estimulación celular']
+    description: 'Tratamientos no invasivos para restaurar la juventud y luminosidad de tu rostro con tecnología de vanguardia y productos certificados.',
+    icon: 'user'
   },
   {
-    icon: '🌿',
+    number: '04',
     title: 'Peeling Especializado',
-    description: 'Peeling orgánico White Up+ Ekseption para tratamiento de rosácea, melasma y manchas. Resultados visibles.',
-    features: ['Ácido tranexámico', 'Despigmentación', 'Piel renovada']
+    description: 'Peeling orgánico White Up+ Ekseption con ácido tranexámico para tratamiento de rosácea, melasma y manchas pigmentarias.',
+    icon: 'moon'
   },
   {
-    icon: '🎯',
+    number: '05',
     title: 'Tratamientos Corporales',
-    description: 'Reducción de medidas, eliminación de celulitis y remodelación corporal con aparatología certificada.',
-    features: ['Reducción de grasa', 'Celulitis', 'Flacidez']
+    description: 'Reducción de medidas, eliminación de celulitis y remodelación corporal con aparatología de última generación.',
+    icon: 'body'
   },
   {
-    icon: '💎',
+    number: '06',
     title: 'Kinesiología Dermatofuncional',
-    description: 'Especialidad que trata alteraciones de la piel de forma funcional, recuperando la salud de tus tejidos.',
-    features: ['Heridas crónicas', 'Quemaduras', 'Cicatrices']
+    description: 'Tratamiento especializado de alteraciones de la piel: heridas crónicas, quemaduras y cicatrices con enfoque funcional.',
+    icon: 'heart'
   }
 ];
 ---
 
 <section class="services" id="servicios">
+  <div class="services-bg"></div>
+  <div class="services-pattern"></div>
+  
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">Nuestros Servicios</span>
-      <h2 class="section-title">Tratamientos<br/><span class="text-accent">especializados</span></h2>
-      <p class="section-subtitle">
-        Combinamos ciencia y estética para ofrecerte tratamientos personalizados 
-        que transforman tu bienestar físico.
-      </p>
+    <div class="services-header animate-on-scroll">
+      <p class="section-label centered">Nuestros Servicios</p>
+      <h2 class="services-title">
+        Tratamientos <em>Especializados</em>
+      </h2>
     </div>
     
     <div class="services-grid">
       {services.map((service, index) => (
-        <article class="service-card reveal" style={`animation-delay: ${index * 100}ms`}>
-          <div class="service-icon">{service.icon}</div>
+        <div class={`service-item animate-on-scroll delay-${(index % 3) + 1}`}>
+          <span class="service-number">{service.number}</span>
+          <div class="service-glow"></div>
+          
+          <div class="service-icon">
+            {service.icon === 'clock' && (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            )}
+            {service.icon === 'activity' && (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            )}
+            {service.icon === 'user' && (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <circle cx="12" cy="8" r="5"/>
+                <path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/>
+              </svg>
+            )}
+            {service.icon === 'moon' && (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313-12.454z"/>
+              </svg>
+            )}
+            {service.icon === 'body' && (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/>
+                <path d="M2 20h20"/>
+                <path d="M14 12v.01"/>
+              </svg>
+            )}
+            {service.icon === 'heart' && (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            )}
+          </div>
+          
           <h3 class="service-title">{service.title}</h3>
-          <p class="service-description">{service.description}</p>
-          <ul class="service-features">
-            {service.features.map((feature) => (
-              <li class="service-feature">
-                <span class="feature-check">✓</span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-          <a href="#contacto" class="service-link">
-            Más información
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </article>
+          <p class="service-text">{service.description}</p>
+          
+          <div class="service-line"></div>
+        </div>
       ))}
     </div>
   </div>
@@ -78,139 +107,194 @@ const services = [
 
 <style>
   .services {
-    padding: var(--space-5xl) 0;
-    background: var(--bg-secondary);
-    position: relative;
-  }
-  
-  .services::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-accent-light), transparent);
-  }
-  
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-  }
-  
-  .service-card {
-    background: var(--bg-card);
-    padding: var(--space-2xl);
-    border-radius: var(--radius-lg);
-    transition: all var(--transition-smooth);
+    padding: var(--section-padding) 0;
+    background: var(--black);
     position: relative;
     overflow: hidden;
   }
-  
-  .service-card::before {
+
+  .services-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse at 30% 0%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 100%, rgba(201, 162, 39, 0.05) 0%, transparent 40%);
+  }
+
+  .services-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a227' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .services-title {
+    color: var(--white);
+  }
+
+  .services-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .service-item {
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.5s var(--transition-smooth);
+    overflow: hidden;
+  }
+
+  .service-item::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform var(--transition-smooth);
+    transition: transform 0.5s var(--transition-smooth);
   }
-  
-  .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
+
+  .service-item:hover {
+    transform: translateY(-10px);
+    border-color: rgba(201, 162, 39, 0.3);
+    background: rgba(255, 255, 255, 0.04);
   }
-  
-  .service-card:hover::before {
+
+  .service-item:hover::before {
     transform: scaleX(1);
   }
-  
-  .service-icon {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-lg);
-    display: inline-block;
-    transition: transform var(--transition-base);
+
+  .service-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.5s;
   }
-  
-  .service-card:hover .service-icon {
+
+  .service-item:hover .service-glow {
+    opacity: 1;
+  }
+
+  .service-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.03);
+    line-height: 1;
+    transition: color 0.5s;
+  }
+
+  .service-item:hover .service-number {
+    color: rgba(201, 162, 39, 0.1);
+  }
+
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .service-icon svg {
+    width: 100%;
+    height: 100%;
+    color: var(--gold);
+    transition: transform 0.5s var(--transition-smooth);
+  }
+
+  .service-item:hover .service-icon svg {
     transform: scale(1.1);
   }
-  
+
   .service-title {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: var(--space-md);
+    font-size: 24px;
+    color: var(--white);
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s;
   }
-  
-  .service-description {
-    font-size: var(--text-sm);
-    color: var(--color-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--space-lg);
+
+  .service-item:hover .service-title {
+    color: var(--gold);
   }
-  
-  .service-features {
-    list-style: none;
-    margin-bottom: var(--space-lg);
+
+  .service-text {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.8;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s;
   }
-  
-  .service-feature {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    font-size: var(--text-sm);
-    color: var(--color-secondary);
-    margin-bottom: var(--space-sm);
+
+  .service-item:hover .service-text {
+    color: rgba(255, 255, 255, 0.7);
   }
-  
-  .feature-check {
-    color: var(--color-success);
-    font-weight: 600;
+
+  .service-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.5s var(--transition-smooth);
   }
-  
-  .service-link {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--color-accent);
-    transition: all var(--transition-base);
+
+  .service-item:hover .service-line {
+    width: 80%;
   }
-  
-  .service-link:hover {
-    color: var(--color-accent-dark);
-    gap: var(--space-sm);
-  }
-  
-  .service-link svg {
-    transition: transform var(--transition-base);
-  }
-  
-  .service-link:hover svg {
-    transform: translateX(4px);
-  }
-  
-  @media (max-width: 992px) {
+
+  @media (max-width: 1200px) {
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-  
-  @media (max-width: 576px) {
+
+  @media (max-width: 768px) {
     .services-grid {
       grid-template-columns: 1fr;
     }
-    
-    .service-card {
-      padding: var(--space-xl);
+
+    .service-item {
+      padding: 40px 30px;
     }
   }
 </style>
