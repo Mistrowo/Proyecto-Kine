@@ -1,115 +1,96 @@
 ---
-// Testimonials Component - Fisiodermy - Con Opiniones Reales
+// Testimonials Component - Fisiodermy
 const testimonials = [
   {
-    text: 'Excelente atención desde el primer momento. Mi tratamiento post operatorio fue fundamental para mi recuperación. Las profesionales son muy dedicadas y los resultados superaron mis expectativas. 100% recomendado.',
-    author: 'María José P.',
-    service: 'Tratamiento Post Operatorio',
-    rating: 5,
-    initials: 'MJ'
+    text: "Excelente atención desde el primer momento. Mi tratamiento post operatorio fue fundamental para mi recuperación. Las profesionales son muy dedicadas y los resultados superaron mis expectativas. 100% recomendado.",
+    author: "María José P.",
+    service: "Tratamiento Post Operatorio",
+    initials: "MJ"
   },
   {
-    text: 'Llegué con mucha fibrosis después de mi cirugía y gracias al tratamiento pude recuperarme súper bien. El ambiente es muy acogedor y te hacen sentir cómoda. Volveré sin duda para los tratamientos faciales.',
-    author: 'Carolina S.',
-    service: 'Recuperación Post Quirúrgica',
-    rating: 5,
-    initials: 'CS'
+    text: "Llegué con mucha fibrosis después de mi cirugía y gracias al tratamiento pude recuperarme súper bien. El ambiente es muy acogedor y te hacen sentir cómoda. Volveré sin duda para los tratamientos faciales.",
+    author: "Carolina S.",
+    service: "Recuperación Post Quirúrgica",
+    initials: "CS"
   },
   {
-    text: 'Me hice el peeling y quedé encantada con los resultados. Mi piel se ve mucho más luminosa y las manchas han disminuido notablemente. La atención es personalizada y muy profesional.',
-    author: 'Francisca M.',
-    service: 'Peeling Especializado',
-    rating: 5,
-    initials: 'FM'
+    text: "Me hice la depilación láser y quedé encantada. Es la mejor inversión que he hecho. Las sesiones son rápidas y el personal es muy profesional. Súper recomendado para todas las mujeres.",
+    author: "Francisca M.",
+    service: "Depilación Láser",
+    initials: "FM"
   },
   {
-    text: 'Increíble la diferencia después de las sesiones de drenaje linfático. Me prepararon muy bien para mi operación y la recuperación fue mucho más rápida de lo esperado. Totalmente agradecida.',
-    author: 'Andrea L.',
-    service: 'Pre Operatorio',
-    rating: 5,
-    initials: 'AL'
-  },
-  {
-    text: 'El tratamiento de rejuvenecimiento facial es maravilloso. Se nota la experiencia y el cuidado en cada sesión. Las chicas son muy amables y siempre están pendientes de que estés cómoda.',
-    author: 'Valentina R.',
-    service: 'Rejuvenecimiento Facial',
-    rating: 5,
-    initials: 'VR'
+    text: "Increíble el tratamiento de rejuvenecimiento facial. Mi piel se ve mucho más luminosa y las manchas han disminuido notablemente. La atención es personalizada y muy profesional.",
+    author: "Andrea L.",
+    service: "Rejuvenecimiento Facial",
+    initials: "AL"
   }
 ];
 ---
 
-<section class="testimonials">
+<section class="testimonials" id="testimonios">
   <div class="testimonials-bg"></div>
-  
   <div class="container">
     <div class="testimonials-header animate-on-scroll">
       <p class="section-label centered">Testimonios</p>
-      <h2 class="testimonials-title">
-        Lo que dicen <em>nuestras pacientes</em>
-      </h2>
+      <h2 class="testimonials-title">Lo que dicen <em>nuestras pacientes</em></h2>
       <div class="testimonials-rating">
-        <div class="testimonials-stars">
-          {[1,2,3,4,5].map(() => (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          ))}
-        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <span class="testimonials-score">5.0 en Google</span>
       </div>
     </div>
     
-    <div class="testimonials-slider animate-on-scroll delay-2">
+    <div class="testimonials-slider animate-on-scroll">
       <div class="testimonials-track">
-        {testimonials.map((testimonial, index) => (
-          <div class={`testimonial-card ${index === 0 ? 'active' : ''}`} data-testimonial={index}>
+        {testimonials.map((t, i) => (
+          <div class={`testimonial-card ${i === 0 ? 'active' : ''}`} data-test={i}>
             <div class="testimonial-quote">"</div>
-            <p class="testimonial-text">{testimonial.text}</p>
-            
+            <p class="testimonial-text">{t.text}</p>
             <div class="testimonial-footer">
               <div class="testimonial-author">
-                <div class="testimonial-avatar">{testimonial.initials}</div>
+                <div class="testimonial-avatar">{t.initials}</div>
                 <div class="testimonial-info">
-                  <h4>{testimonial.author}</h4>
-                  <p>{testimonial.service}</p>
+                  <h4>{t.author}</h4>
+                  <p>{t.service}</p>
                 </div>
               </div>
               <div class="testimonial-stars">
-                {Array.from({ length: testimonial.rating }).map(() => (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                  </svg>
-                ))}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               </div>
             </div>
           </div>
         ))}
       </div>
       
-      <!-- Navigation -->
       <div class="testimonials-nav">
-        <button class="testimonials-prev" aria-label="Anterior">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <button class="test-nav-btn" id="testPrev" aria-label="Anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M15 18l-6-6 6-6"/>
           </svg>
         </button>
-        <div class="testimonials-dots">
-          {testimonials.map((_, index) => (
-            <button class={`testimonials-dot ${index === 0 ? 'active' : ''}`} data-dot={index}></button>
+        <div class="test-dots">
+          {testimonials.map((_, i) => (
+            <button class={`test-dot ${i === 0 ? 'active' : ''}`} data-tdot={i} aria-label={`Testimonio ${i + 1}`}></button>
           ))}
         </div>
-        <button class="testimonials-next" aria-label="Siguiente">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <button class="test-nav-btn" id="testNext" aria-label="Siguiente">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M9 18l6-6-6-6"/>
           </svg>
         </button>
       </div>
     </div>
     
-    <!-- Google Badge -->
-    <div class="google-badge animate-on-scroll delay-3">
-      <svg class="google-icon" viewBox="0 0 24 24">
+    <div class="google-badge animate-on-scroll">
+      <svg viewBox="0 0 24 24">
         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
         <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
         <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
@@ -118,75 +99,11 @@ const testimonials = [
       <span>Reseñas verificadas de Google</span>
     </div>
   </div>
-  
-  <!-- Decorative -->
-  <div class="testimonials-decor testimonials-decor-1"></div>
-  <div class="testimonials-decor testimonials-decor-2"></div>
 </section>
-
-<script>
-  const cards = document.querySelectorAll('.testimonial-card');
-  const dots = document.querySelectorAll('.testimonials-dot');
-  const prevBtn = document.querySelector('.testimonials-prev');
-  const nextBtn = document.querySelector('.testimonials-next');
-  
-  let currentCard = 0;
-  let autoPlayInterval;
-  
-  function showCard(index) {
-    cards.forEach(card => card.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    currentCard = index;
-    if (currentCard >= cards.length) currentCard = 0;
-    if (currentCard < 0) currentCard = cards.length - 1;
-    
-    cards[currentCard].classList.add('active');
-    dots[currentCard].classList.add('active');
-  }
-  
-  function nextCard() {
-    showCard(currentCard + 1);
-  }
-  
-  function prevCard() {
-    showCard(currentCard - 1);
-  }
-  
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(nextCard, 5000);
-  }
-  
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
-  
-  prevBtn?.addEventListener('click', () => {
-    stopAutoPlay();
-    prevCard();
-    startAutoPlay();
-  });
-  
-  nextBtn?.addEventListener('click', () => {
-    stopAutoPlay();
-    nextCard();
-    startAutoPlay();
-  });
-  
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      stopAutoPlay();
-      showCard(index);
-      startAutoPlay();
-    });
-  });
-  
-  startAutoPlay();
-</script>
 
 <style>
   .testimonials {
-    padding: var(--section-padding) 0;
+    padding: 150px 0;
     background: var(--black);
     position: relative;
     overflow: hidden;
@@ -199,8 +116,8 @@ const testimonials = [
     width: 100%;
     height: 100%;
     background: 
-      radial-gradient(ellipse at 0% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 40%),
-      radial-gradient(ellipse at 100% 50%, rgba(201, 162, 39, 0.08) 0%, transparent 40%);
+      radial-gradient(ellipse at 0% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 40%),
+      radial-gradient(ellipse at 100% 50%, rgba(201, 162, 39, 0.1) 0%, transparent 40%);
   }
 
   .testimonials-header {
@@ -213,6 +130,7 @@ const testimonials = [
   .testimonials-title {
     color: var(--white);
     margin-bottom: 25px;
+    font-size: 48px;
   }
 
   .testimonials-title em {
@@ -224,36 +142,32 @@ const testimonials = [
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 8px;
   }
 
-  .testimonials-rating .testimonials-stars {
-    display: flex;
-    gap: 5px;
-  }
-
-  .testimonials-rating .testimonials-stars svg {
-    width: 22px;
-    height: 22px;
+  .testimonials-rating svg {
+    width: 24px;
+    height: 24px;
     color: var(--gold);
+    fill: var(--gold);
   }
 
   .testimonials-score {
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(255, 255, 255, 0.6);
+    margin-left: 10px;
   }
 
-  /* Slider */
   .testimonials-slider {
     position: relative;
     z-index: 2;
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
   }
 
   .testimonials-track {
     position: relative;
-    min-height: 350px;
+    min-height: 380px;
   }
 
   .testimonial-card {
@@ -263,11 +177,11 @@ const testimonials = [
     width: 100%;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 50px;
+    padding: 55px;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(30px);
-    transition: all 0.5s ease;
+    transform: translateX(50px);
+    transition: all 0.6s ease;
   }
 
   .testimonial-card.active {
@@ -278,21 +192,21 @@ const testimonials = [
 
   .testimonial-quote {
     font-family: var(--font-display);
-    font-size: 100px;
+    font-size: 120px;
     color: var(--gold);
     opacity: 0.2;
     line-height: 0.5;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   .testimonial-text {
     font-family: var(--font-display);
-    font-size: 24px;
+    font-size: 26px;
     font-style: italic;
     font-weight: 300;
     color: var(--white);
     line-height: 1.7;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
   }
 
   .testimonial-footer {
@@ -310,109 +224,102 @@ const testimonials = [
   }
 
   .testimonial-avatar {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     background: var(--gold);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 500;
     color: var(--black);
   }
 
   .testimonial-info h4 {
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     color: var(--white);
     margin-bottom: 5px;
   }
 
   .testimonial-info p {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
   }
 
   .testimonial-stars {
     display: flex;
-    gap: 5px;
+    gap: 6px;
   }
 
   .testimonial-stars svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     color: var(--gold);
+    fill: var(--gold);
   }
 
-  /* Navigation */
   .testimonials-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
-    margin-top: 40px;
+    gap: 30px;
+    margin-top: 50px;
   }
 
-  .testimonials-prev,
-  .testimonials-next {
-    width: 50px;
-    height: 50px;
+  .test-nav-btn {
+    width: 55px;
+    height: 55px;
     background: transparent;
-    border: 1px solid var(--gold);
+    border: 2px solid var(--gold);
     color: var(--gold);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
   }
 
-  .testimonials-prev:hover,
-  .testimonials-next:hover {
+  .test-nav-btn:hover {
     background: var(--gold);
     color: var(--black);
   }
 
-  .testimonials-prev svg,
-  .testimonials-next svg {
-    width: 20px;
-    height: 20px;
+  .test-nav-btn svg {
+    width: 22px;
+    height: 22px;
   }
 
-  .testimonials-dots {
+  .test-dots {
     display: flex;
-    gap: 12px;
+    gap: 15px;
   }
 
-  .testimonials-dot {
-    width: 12px;
-    height: 12px;
+  .test-dot {
+    width: 14px;
+    height: 14px;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     padding: 0;
   }
 
-  .testimonials-dot:hover {
-    border-color: var(--gold);
-  }
-
-  .testimonials-dot.active {
+  .test-dot.active {
     background: var(--gold);
     border-color: var(--gold);
+    transform: scale(1.2);
   }
 
-  /* Google Badge */
   .google-badge {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-top: 50px;
-    padding: 20px 30px;
+    gap: 15px;
+    margin-top: 60px;
+    padding: 25px 35px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     width: fit-content;
@@ -420,62 +327,86 @@ const testimonials = [
     margin-right: auto;
   }
 
-  .google-icon {
-    width: 24px;
-    height: 24px;
+  .google-badge svg {
+    width: 28px;
+    height: 28px;
   }
 
   .google-badge span {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
   }
 
-  /* Decorative */
-  .testimonials-decor {
-    position: absolute;
-    border: 1px solid rgba(201, 162, 39, 0.15);
-    pointer-events: none;
-  }
-
-  .testimonials-decor-1 {
-    top: 15%;
-    left: 5%;
-    width: 100px;
-    height: 100px;
-    transform: rotate(45deg);
-    animation: float 8s ease-in-out infinite;
-  }
-
-  .testimonials-decor-2 {
-    bottom: 15%;
-    right: 5%;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    animation: float 6s ease-in-out infinite reverse;
-  }
-
   @media (max-width: 768px) {
+    .testimonials-title {
+      font-size: 36px;
+    }
+
     .testimonial-card {
       padding: 35px 25px;
     }
 
     .testimonial-text {
-      font-size: 18px;
-    }
-
-    .testimonial-quote {
-      font-size: 70px;
+      font-size: 20px;
     }
 
     .testimonial-footer {
       flex-direction: column;
-      gap: 20px;
+      gap: 25px;
       align-items: flex-start;
     }
 
-    .testimonials-decor {
-      display: none;
+    .testimonials-track {
+      min-height: 450px;
     }
   }
 </style>
+
+<script>
+  const testCards = document.querySelectorAll('.testimonial-card');
+  const testDots = document.querySelectorAll('.test-dot');
+  const testPrev = document.getElementById('testPrev');
+  const testNext = document.getElementById('testNext');
+  let testIndex = 0;
+  let testInterval: ReturnType<typeof setInterval>;
+
+  function goTestSlide(i: number) {
+    testCards.forEach(c => c.classList.remove('active'));
+    testDots.forEach(d => d.classList.remove('active'));
+    testIndex = i;
+    if (testIndex >= testCards.length) testIndex = 0;
+    if (testIndex < 0) testIndex = testCards.length - 1;
+    testCards[testIndex].classList.add('active');
+    testDots[testIndex].classList.add('active');
+  }
+
+  function startTest() {
+    testInterval = setInterval(() => goTestSlide(testIndex + 1), 5000);
+  }
+
+  function stopTest() {
+    clearInterval(testInterval);
+  }
+
+  testPrev?.addEventListener('click', () => {
+    stopTest();
+    goTestSlide(testIndex - 1);
+    startTest();
+  });
+
+  testNext?.addEventListener('click', () => {
+    stopTest();
+    goTestSlide(testIndex + 1);
+    startTest();
+  });
+
+  testDots.forEach((d, i) => {
+    d.addEventListener('click', () => {
+      stopTest();
+      goTestSlide(i);
+      startTest();
+    });
+  });
+
+  startTest();
+</script>

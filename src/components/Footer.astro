@@ -6,13 +6,13 @@ const serviceLinks = [
   { name: 'Pre Operatorio', href: '#servicios' },
   { name: 'Post Operatorio', href: '#servicios' },
   { name: 'Rejuvenecimiento Facial', href: '#servicios' },
-  { name: 'Peeling Especializado', href: '#servicios' },
-  { name: 'Tratamientos Corporales', href: '#servicios' }
+  { name: 'Depilación Láser', href: '#servicios' }
 ];
 
 const companyLinks = [
-  { name: 'Nosotros', href: '#nosotros' },
-  { name: 'Proceso', href: '#proceso' },
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Servicios', href: '#servicios' },
+  { name: 'Testimonios', href: '#testimonios' },
   { name: 'Contacto', href: '#contacto' },
   { name: 'Tienda Online', href: 'https://tienda.fisiodermy.cl', external: true }
 ];
@@ -26,8 +26,8 @@ const companyLinks = [
           Fisio<span>dermy</span>
         </a>
         <p>
-          Especialistas en fisioterapia dermatofuncional y tratamientos estéticos avanzados. 
-          Resultados profesionales con atención personalizada en Santiago, Chile.
+          Centro de Estética y Depilación Láser especializado en tratamientos estéticos avanzados. 
+          Resultados profesionales con atención personalizada en Talagante.
         </p>
       </div>
       
@@ -63,8 +63,8 @@ const companyLinks = [
       <div class="footer-column">
         <h4 class="footer-title">Contacto</h4>
         <ul class="footer-links footer-contact">
-          <li>Santiago, Chile</li>
-          <li>Providencia</li>
+          <li>Talagante</li>
+          <li>Región Metropolitana</li>
           <li>+56 9 XXXX XXXX</li>
           <li>contacto@fisiodermy.cl</li>
         </ul>
@@ -73,10 +73,6 @@ const companyLinks = [
     
     <div class="footer-bottom">
       <p>© {currentYear} Fisiodermy Estética Avanzada. Todos los derechos reservados.</p>
-      <div class="footer-bottom-links">
-        <a href="#">Política de Privacidad</a>
-        <a href="#">Términos de Servicio</a>
-      </div>
     </div>
   </div>
 </footer>
@@ -102,6 +98,7 @@ const companyLinks = [
     letter-spacing: 4px;
     color: var(--white);
     text-transform: uppercase;
+    text-decoration: none;
     margin-bottom: 30px;
     display: inline-block;
     transition: opacity 0.3s;
@@ -145,6 +142,7 @@ const companyLinks = [
     font-size: 14px;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
     transition: all 0.3s;
     display: inline-flex;
     align-items: center;
@@ -170,28 +168,13 @@ const companyLinks = [
   .footer-bottom {
     padding-top: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
 
   .footer-bottom p {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.35);
-  }
-
-  .footer-bottom-links {
-    display: flex;
-    gap: 30px;
-  }
-
-  .footer-bottom-links a {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.35);
-    transition: color 0.3s;
-  }
-
-  .footer-bottom-links a:hover {
-    color: var(--gold);
   }
 
   @media (max-width: 992px) {

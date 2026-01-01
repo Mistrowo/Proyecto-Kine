@@ -1,69 +1,63 @@
 ---
-// Intro Component - Fisiodermy
-const features = [
-  { icon: 'activity', text: 'Tecnología Avanzada' },
-  { icon: 'users', text: 'Atención Personalizada' },
-  { icon: 'shield', text: 'Productos Certificados' },
-  { icon: 'award', text: 'Profesionales Expertos' }
-];
+// Intro Component - Fisiodermy (Sin imagen, About tiene la imagen)
 ---
 
 <section class="intro">
   <div class="container">
-    <div class="intro-grid">
-      <div class="intro-content animate-on-scroll">
-        <p class="section-label">Bienvenidos</p>
-        <h2 class="intro-title">
-          Bienestar físico y <em>belleza integral</em>
-        </h2>
-        <p class="intro-text">
-          Nos complace ofrecerte una amplia gama de servicios de alta calidad para que puedas 
-          lucir tu mejor versión. No solo nos enfocamos en embellecimiento, sino también en 
-          promover el bienestar físico. Nuestro equipo de profesionales está comprometido en 
-          facilitar el proceso y la recuperación de las intervenciones.
-        </p>
-        
-        <div class="intro-features">
-          {features.map((feature, index) => (
-            <div class={`intro-feature animate-on-scroll delay-${index + 1}`}>
-              <div class="intro-feature-icon">
-                {feature.icon === 'activity' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                  </svg>
-                )}
-                {feature.icon === 'users' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="8.5" cy="7" r="4"/>
-                    <path d="M20 8v6M23 11h-6"/>
-                  </svg>
-                )}
-                {feature.icon === 'shield' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
-                )}
-                {feature.icon === 'award' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                  </svg>
-                )}
-              </div>
-              <span>{feature.text}</span>
-            </div>
-          ))}
+    <div class="intro-content animate-on-scroll">
+      <p class="section-label centered">Bienvenidos a Fisiodermy</p>
+      <h2 class="intro-title">Bienestar físico y <em>belleza integral</em></h2>
+      <p class="intro-text">
+        Nos complace ofrecerte una amplia gama de servicios de alta calidad para que puedas lucir tu mejor versión. No solo nos enfocamos en embellecimiento, sino también en promover el bienestar físico.
+      </p>
+    </div>
+    
+    <div class="intro-features animate-on-scroll">
+      <div class="intro-feature">
+        <div class="intro-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="intro-feature-content">
+          <h4>Tecnología Avanzada</h4>
+          <p>Equipos de última generación para resultados óptimos</p>
         </div>
       </div>
-      
-      <div class="intro-visual animate-on-scroll from-right delay-2">
-        <div class="intro-image">
-          <span>Imagen de tratamiento</span>
+      <div class="intro-feature">
+        <div class="intro-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="8.5" cy="7" r="4"/>
+            <path d="M20 8v6M23 11h-6"/>
+          </svg>
         </div>
-        <div class="intro-accent"></div>
-        <div class="intro-accent-2"></div>
-        <div class="intro-corner intro-corner-1"></div>
-        <div class="intro-corner intro-corner-2"></div>
+        <div class="intro-feature-content">
+          <h4>Atención Personalizada</h4>
+          <p>Evaluación individual para cada paciente</p>
+        </div>
+      </div>
+      <div class="intro-feature">
+        <div class="intro-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="intro-feature-content">
+          <h4>Productos Certificados</h4>
+          <p>Marcas internacionales de alta calidad</p>
+        </div>
+      </div>
+      <div class="intro-feature">
+        <div class="intro-feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="intro-feature-content">
+          <h4>Profesionales Expertos</h4>
+          <p>Equipo altamente capacitado y certificado</p>
+        </div>
       </div>
     </div>
   </div>
@@ -71,27 +65,20 @@ const features = [
 
 <style>
   .intro {
-    padding: var(--section-padding) 0;
+    padding: 120px 0;
     background: var(--white);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .intro-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: center;
+    text-align: center;
   }
 
   .intro-content {
-    padding-right: 50px;
+    max-width: 700px;
+    margin: 0 auto 60px;
   }
 
   .intro-title {
+    font-size: 48px;
     color: var(--black);
-    margin-bottom: 30px;
-    line-height: 1.2;
+    margin-bottom: 25px;
   }
 
   .intro-title em {
@@ -100,163 +87,98 @@ const features = [
   }
 
   .intro-text {
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 300;
     color: var(--gray);
     line-height: 2;
-    margin-bottom: 40px;
   }
 
   .intro-features {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .intro-feature {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
+    padding: 40px 30px;
     background: var(--white-soft);
-    transition: all 0.3s var(--transition-smooth);
+    transition: all 0.4s ease;
+    text-align: center;
   }
 
   .intro-feature:hover {
     background: var(--black);
-    transform: translateX(5px);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   }
 
-  .intro-feature:hover span {
+  .intro-feature:hover .intro-feature-content h4,
+  .intro-feature:hover .intro-feature-content p {
     color: var(--white);
+  }
+
+  .intro-feature-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    transition: background 0.4s ease;
   }
 
   .intro-feature:hover .intro-feature-icon {
     background: var(--gold);
   }
 
+  .intro-feature-icon svg {
+    width: 30px;
+    height: 30px;
+    color: var(--gold);
+    transition: color 0.4s ease;
+  }
+
   .intro-feature:hover .intro-feature-icon svg {
     color: var(--black);
   }
 
-  .intro-feature-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.3s;
-  }
-
-  .intro-feature-icon svg {
-    width: 22px;
-    height: 22px;
-    color: var(--gold);
-    transition: color 0.3s;
-  }
-
-  .intro-feature span {
-    font-size: 13px;
-    font-weight: 500;
+  .intro-feature-content h4 {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
     color: var(--black);
-    transition: color 0.3s;
+    margin-bottom: 10px;
+    transition: color 0.4s ease;
   }
 
-  /* Visual */
-  .intro-visual {
-    position: relative;
-  }
-
-  .intro-image {
-    width: 100%;
-    height: 600px;
-    background: linear-gradient(135deg, var(--black-soft) 0%, var(--black-medium) 100%);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .intro-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent 40%, rgba(201, 162, 39, 0.1) 100%);
-  }
-
-  .intro-image span {
-    font-family: var(--font-display);
+  .intro-feature-content p {
     font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.15);
-  }
-
-  .intro-accent {
-    position: absolute;
-    top: -30px;
-    left: -30px;
-    width: 150px;
-    height: 150px;
-    border: 1px solid var(--gold);
-    opacity: 0.4;
-    animation: borderGlow 4s ease-in-out infinite;
-  }
-
-  .intro-accent-2 {
-    position: absolute;
-    bottom: -40px;
-    right: -40px;
-    width: 120px;
-    height: 120px;
-    background: var(--gold);
-    opacity: 0.1;
-  }
-
-  .intro-corner {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--gold);
-  }
-
-  .intro-corner-1 {
-    bottom: 30px;
-    left: 30px;
-    border-right: none;
-    border-top: none;
-  }
-
-  .intro-corner-2 {
-    top: 30px;
-    right: 30px;
-    border-left: none;
-    border-bottom: none;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.6;
+    transition: color 0.4s ease;
   }
 
   @media (max-width: 992px) {
-    .intro-grid {
-      grid-template-columns: 1fr;
-      gap: 60px;
-    }
-
-    .intro-content {
-      padding-right: 0;
-    }
-
-    .intro-image {
-      height: 450px;
+    .intro-features {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 768px) {
+    .intro-title {
+      font-size: 36px;
+    }
+
     .intro-features {
       grid-template-columns: 1fr;
+    }
+
+    .intro-feature {
+      padding: 30px 25px;
     }
   }
 </style>
