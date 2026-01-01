@@ -1,7 +1,5 @@
 ---
-// Fisiodermy - Landing Page
-// Estética Avanzada - Santiago, Chile
-
+// Main Page - Fisiodermy
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
@@ -11,25 +9,21 @@ import Services from '../components/Services.astro';
 import Process from '../components/Process.astro';
 import About from '../components/About.astro';
 import Testimonials from '../components/Testimonials.astro';
-import CTA from '../components/CTA.astro';
+import Brands from '../components/Brands.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import WhatsApp from '../components/WhatsApp.astro';
 ---
 
-<Layout>
+<Layout title="Fisiodermy | Estética Avanzada">
   <Header />
-  <main>
-    <Hero />
-    <Marquee />
-    <Intro />
-    <Services />
-    <Process />
-    <About />
-    <Testimonials />
-    <CTA />
-    <Contact />
-  </main>
+  <Hero />
+  <Marquee />
+  <Intro />
+  <Services />
+  <Testimonials />
+  <Brands />
+  <Contact />
   <Footer />
-  <WhatsApp phone="569XXXXXXXX" />
-</Layout>
+  <WhatsApp phone="569XXXXXXXX" message="Hola, me gustaría agendar una consulta" />
+</Layout> 
