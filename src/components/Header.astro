@@ -16,7 +16,17 @@
         <a href="#contacto">Contacto</a>
       </nav>
       
-      <a href="#contacto" class="header-cta">Reservar Cita</a>
+      <div class="header-buttons">
+        <a href="https://tienda.fisiodermy.cl" target="_blank" rel="noopener" class="header-cta header-cta-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          Tienda
+        </a>
+        <a href="#contacto" class="header-cta header-cta-solid">Reservar Cita</a>
+      </div>
       
       <button class="mobile-menu" id="mobileMenu" aria-label="Menú">
         <span></span>
@@ -32,6 +42,14 @@
     <a href="#servicios">Servicios</a>
     <a href="#testimonios">Testimonios</a>
     <a href="#contacto">Contacto</a>
+    <a href="https://tienda.fisiodermy.cl" target="_blank" rel="noopener" class="mobile-cta-outline">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      Visitar Tienda
+    </a>
     <a href="#contacto" class="mobile-cta">Reservar Cita</a>
   </nav>
 </header>
@@ -150,22 +168,53 @@
     width: 100%;
   }
 
+  /* Header Buttons Container */
+  .header-buttons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
   .header-cta {
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 15px 35px;
-    background: transparent;
-    color: var(--gold);
-    border: 1px solid var(--gold);
+    padding: 15px 25px;
     text-decoration: none;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .header-cta::before {
+  .header-cta svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Botón Outline - Tienda */
+  .header-cta-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .header-cta-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Botón Solid - Reservar */
+  .header-cta-solid {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+
+  .header-cta-solid::before {
     content: '';
     position: absolute;
     top: 0;
@@ -177,11 +226,11 @@
     z-index: -1;
   }
 
-  .header-cta:hover::before {
+  .header-cta-solid:hover::before {
     left: 0;
   }
 
-  .header-cta:hover {
+  .header-cta-solid:hover {
     color: var(--black);
   }
 
@@ -262,21 +311,42 @@
   .mobile-nav.active a:nth-child(3) { transition-delay: 0.2s; }
   .mobile-nav.active a:nth-child(4) { transition-delay: 0.25s; }
   .mobile-nav.active a:nth-child(5) { transition-delay: 0.3s; }
+  .mobile-nav.active a:nth-child(6) { transition-delay: 0.35s; }
 
   .mobile-nav a:hover {
     color: var(--gold);
   }
 
-  .mobile-cta {
+  .mobile-cta-outline {
     margin-top: 20px;
     padding: 18px 40px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    font-size: 16px !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobile-cta-outline svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-cta-outline:hover {
+    border-color: var(--gold) !important;
+  }
+
+  .mobile-cta {
+    padding: 18px 40px !important;
     border: 1px solid var(--gold) !important;
-    font-size: 14px !important;
+    font-size: 16px !important;
+    background: var(--gold);
+    color: var(--black) !important;
   }
 
   @media (max-width: 992px) {
     .nav,
-    .header-cta {
+    .header-buttons {
       display: none;
     }
 
