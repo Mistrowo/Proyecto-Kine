@@ -102,15 +102,12 @@ const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
         <h3>Solicitar Información</h3>
         <p>Completa el formulario y te contactaremos a la brevedad</p>
         
-        <!-- Web3Forms - GRATIS e ILIMITADO -->
         <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
-          <!-- API Key desde variable de entorno -->
           <input type="hidden" name="access_key" value={WEB3FORMS_KEY}>
           <input type="hidden" name="subject" value="Nueva consulta desde Fisiodermy.cl">
           <input type="hidden" name="from_name" value="Fisiodermy Web">
           <input type="hidden" name="redirect" value="https://fisiodermy.cl/#contacto">
           
-          <!-- Honeypot anti-spam -->
           <input type="checkbox" name="botcheck" class="hidden" style="display:none">
           
           <div class="form-row">
