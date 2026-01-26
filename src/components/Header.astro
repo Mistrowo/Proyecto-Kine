@@ -1,5 +1,6 @@
 ---
 // Header Component - Fisiodermy
+const AGENDAPRO_URL = "https://fisiodermy.site.agendapro.com/cl/sucursal/462513";
 ---
 
 <header class="header" id="header">
@@ -23,9 +24,17 @@
             <line x1="3" y1="6" x2="21" y2="6"/>
             <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
-          Compra Aquí 
+          Tienda
         </a>
-        <a href="#contacto" class="header-cta header-cta-solid">Reservar Cita</a>
+        <a href={AGENDAPRO_URL} target="_blank" rel="noopener" class="header-cta header-cta-solid">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Reservar
+        </a>
       </div>
       
       <button class="mobile-menu" id="mobileMenu" aria-label="Menú">
@@ -48,9 +57,17 @@
         <line x1="3" y1="6" x2="21" y2="6"/>
         <path d="M16 10a4 4 0 0 1-8 0"/>
       </svg>
-      Visitar Tienda
+      Tienda
     </a>
-    <a href="#contacto" class="mobile-cta">Reservar Cita</a>
+    <a href={AGENDAPRO_URL} target="_blank" rel="noopener" class="mobile-cta">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      Reservar Cita
+    </a>
   </nav>
 </header>
 
@@ -168,7 +185,6 @@
     width: 100%;
   }
 
-  /* Header Buttons Container */
   .header-buttons {
     display: flex;
     gap: 15px;
@@ -195,7 +211,6 @@
     height: 16px;
   }
 
-  /* Botón Outline - Tienda */
   .header-cta-outline {
     background: transparent;
     color: var(--white);
@@ -207,31 +222,17 @@
     color: var(--gold);
   }
 
-  /* Botón Solid - Reservar */
   .header-cta-solid {
-    background: transparent;
-    color: var(--gold);
+    background: var(--gold);
+    color: var(--black);
     border: 1px solid var(--gold);
   }
 
-  .header-cta-solid::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--gold);
-    transition: left 0.4s ease;
-    z-index: -1;
-  }
-
-  .header-cta-solid:hover::before {
-    left: 0;
-  }
-
   .header-cta-solid:hover {
-    color: var(--black);
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(201, 162, 39, 0.3);
   }
 
   .mobile-menu {
@@ -342,6 +343,14 @@
     font-size: 16px !important;
     background: var(--gold);
     color: var(--black) !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobile-cta svg {
+    width: 20px;
+    height: 20px;
   }
 
   @media (max-width: 992px) {
@@ -357,7 +366,6 @@
 </style>
 
 <script>
-  // Header scroll animation
   const header = document.getElementById('header');
   
   window.addEventListener('scroll', () => {
@@ -368,7 +376,6 @@
     }
   });
 
-  // Mobile menu toggle
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileNav = document.getElementById('mobileNav');
   
@@ -378,7 +385,6 @@
     document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
   });
 
-  // Close mobile nav on link click
   mobileNav?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('active');
