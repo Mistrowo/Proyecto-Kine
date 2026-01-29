@@ -16,19 +16,19 @@ const services = [
   {
     number: '03',
     title: 'Rejuvenecimiento Facial',
-    description: 'Tratamientos no invasivos para restaurar la juventud y luminosidad de tu rostro con tecnología de vanguardia y productos certificados.',
+    description: 'Aparatología de vanguardia y marcas premium para estimular colágeno, mejorar la calidad de la piel, unificar el tono y devolver luminosidad con resultados naturales.',
     icon: 'user'
   },
- {
-  number: '04',
-  title: 'Depilación Láser Blend4 – LunaBox',
-  description: 'En Fisiodermy trabajamos con tecnología Blend4 de LunaBox, un sistema avanzado de depilación láser de cuatro longitudes de onda, que permite tratar de forma eficaz y segura todo tipo de pieles y vellos, incluso vello fino, claro o zonas sensibles. La combinación de cuatro láseres en un solo disparo actúa a distintos niveles del folículo piloso, logrando resultados más efectivos.',
-  icon: 'moon'
-},
+  {
+    number: '04',
+    title: 'Depilación Láser Blend4',
+    description: 'Tecnología Blend4 de LunaBox con cuatro longitudes de onda para tratar todo tipo de pieles y vellos, incluso fino, claro o zonas sensibles. Resultados efectivos y duraderos.',
+    icon: 'laser'
+  },
   {
     number: '05',
     title: 'Tratamientos Corporales',
-    description: 'Abordamos los tratamientos corporales desde una mirada integral, clínica y personalizada. Combinamos kinesiología dermatofuncional, tecnología estética avanzada y técnicas manuales para mejorar la salud de los tejidos y la estética.',
+    description: 'Abordamos los tratamientos corporales desde una mirada integral, clínica y personalizada. Combinamos kinesiología dermatofuncional, tecnología estética avanzada y técnicas manuales.',
     icon: 'body'
   },
   {
@@ -76,9 +76,12 @@ const services = [
                 <path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/>
               </svg>
             )}
-            {service.icon === 'moon' && (
+            {service.icon === 'laser' && (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313-12.454z"/>
+                <path d="M9 17H5a2 2 0 0 0-2 2 2 2 0 0 0 2 2h2a2 2 0 0 0 2-2 2 2 0 0 0-2-2Z"/>
+                <path d="M21 3h-4l-3 6 2 2 5-8Z"/>
+                <path d="m14 11-6 6"/>
+                <circle cx="12" cy="12" r="1"/>
               </svg>
             )}
             {service.icon === 'body' && (

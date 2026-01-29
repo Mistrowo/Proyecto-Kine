@@ -1,0 +1,459 @@
+---
+// Equipment Component - Fisiodermy
+// Agentes Físicos y Tecnología
+
+const technologies = [
+  {
+    name: 'Ultracavitación',
+    brand: 'LunaBox',
+    description: 'Reducción de adiposidad localizada y remodelación corporal mediante ondas ultrasónicas de alta frecuencia.',
+    icon: 'waves'
+  },
+  {
+    name: 'Radiofrecuencia',
+    brand: 'LunaBox',
+    description: 'Estimula la producción de colágeno y elastina, mejorando la firmeza, elasticidad y calidad de la piel facial y corporal.',
+    icon: 'radio'
+  },
+  {
+    name: 'Sculpt HIFEM',
+    brand: 'LunaBox',
+    description: 'Electroestimulación electromagnética de alta intensidad que fortalece la musculatura profunda y contribuye al modelado corporal.',
+    icon: 'zap'
+  },
+  {
+    name: 'Láser Blend4',
+    brand: 'LunaBox',
+    description: 'Sistema de depilación láser de cuatro longitudes de onda, seguro y eficaz para todo tipo de piel.',
+    icon: 'target'
+  },
+  {
+    name: 'Láser Plasmed',
+    brand: 'IBRAMED',
+    description: 'Tecnología láser para bioestimulación, regeneración tisular y apoyo en protocolos terapéuticos y estéticos.',
+    icon: 'sparkle'
+  },
+  {
+    name: 'Carboxiterapia',
+    brand: 'IBRAMED',
+    description: 'Aplicación controlada de CO₂ favoreciendo oxigenación tisular, circulación y regeneración cutánea.',
+    icon: 'wind'
+  },
+  {
+    name: 'Galvanopuntura',
+    brand: 'IBRAMED',
+    description: 'Tratamiento de fibrosis, estrías y alteraciones del tejido mediante corriente galvánica focalizada.',
+    icon: 'bolt'
+  },
+  {
+    name: 'Presoterapia',
+    brand: 'Therapress',
+    description: 'Compresión secuencial que estimula el drenaje linfático, mejora el retorno venoso y reduce edema.',
+    icon: 'compress'
+  },
+  {
+    name: 'MFUS / HIFU',
+    brand: 'LunaBox',
+    description: 'Ultrasonido focalizado de alta intensidad para flacidez facial y corporal, estimulando colágeno en planos profundos.',
+    icon: 'focus'
+  }
+];
+---
+
+<section class="equipment" id="tecnologia">
+  <div class="equipment-bg"></div>
+  
+  <div class="container">
+    <div class="equipment-header animate-on-scroll">
+      <p class="section-label centered">Tecnología</p>
+      <h2 class="equipment-title">Agentes Físicos <em>Avanzados</em></h2>
+      <p class="equipment-subtitle">
+        Trabajamos con tecnología de alta gama, seleccionada por su respaldo clínico, seguridad y eficacia. 
+        Nuestro enfoque combina aparatología de vanguardia con criterio profesional, adaptando cada protocolo 
+        a las necesidades específicas de cada paciente.
+      </p>
+    </div>
+
+    <!-- Brands Badge -->
+    <div class="equipment-brands animate-on-scroll">
+      <div class="brand-badge">
+        <span class="brand-name">LunaBox</span>
+        <span class="brand-tag">Partner Tecnológico</span>
+      </div>
+      <div class="brand-badge">
+        <span class="brand-name">IBRAMED</span>
+        <span class="brand-tag">Equipamiento Clínico</span>
+      </div>
+      <div class="brand-badge">
+        <span class="brand-name">Therapress</span>
+        <span class="brand-tag">Presoterapia</span>
+      </div>
+    </div>
+    
+    <!-- Technologies Grid -->
+    <div class="equipment-grid">
+      {technologies.map((tech, index) => (
+        <div class={`equipment-card animate-on-scroll delay-${(index % 3) + 1}`}>
+          <div class="card-header">
+            <div class="card-icon">
+              {tech.icon === 'waves' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M2 12c.6-.6 1.4-1 2.2-1 1.7 0 3.1 1.3 3.1 3s-1.4 3-3.1 3c-.8 0-1.6-.4-2.2-1"/>
+                  <path d="M6 8c1-.9 2.3-1.5 3.8-1.5 3 0 5.4 2.5 5.4 5.5s-2.4 5.5-5.4 5.5c-1.5 0-2.8-.6-3.8-1.5"/>
+                  <path d="M10 4c1.3-1.3 3.1-2 5-2 4 0 7 3.1 7 7s-3 7-7 7c-1.9 0-3.7-.8-5-2"/>
+                </svg>
+              )}
+              {tech.icon === 'radio' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="2"/>
+                  <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/>
+                </svg>
+              )}
+              {tech.icon === 'zap' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              )}
+              {tech.icon === 'target' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              )}
+              {tech.icon === 'sparkle' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 3v18M5.5 8.5l13 7M5.5 15.5l13-7"/>
+                </svg>
+              )}
+              {tech.icon === 'wind' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
+                  <path d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
+                  <path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+                </svg>
+              )}
+              {tech.icon === 'bolt' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+                </svg>
+              )}
+              {tech.icon === 'compress' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 14h6v6"/>
+                  <path d="M20 10h-6V4"/>
+                  <path d="m14 10 7-7"/>
+                  <path d="m3 21 7-7"/>
+                </svg>
+              )}
+              {tech.icon === 'focus' && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+                  <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+                  <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+                  <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+                </svg>
+              )}
+            </div>
+            <span class="card-brand">{tech.brand}</span>
+          </div>
+          <h3 class="card-title">{tech.name}</h3>
+          <p class="card-text">{tech.description}</p>
+          <div class="card-line"></div>
+        </div>
+      ))}
+    </div>
+
+   
+  </div>
+</section>
+
+<style>
+  .equipment {
+    padding: 150px 0;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .equipment-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.05) 0%, transparent 40%);
+  }
+
+  .equipment-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .equipment-title {
+    color: var(--white);
+    font-size: 52px;
+    margin-bottom: 25px;
+  }
+
+  .equipment-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .equipment-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  /* Brands */
+  .equipment-brands {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+
+  .brand-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    transition: all 0.4s ease;
+  }
+
+  .brand-badge:hover {
+    background: rgba(201, 162, 39, 0.1);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+
+  .brand-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Grid */
+  .equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .equipment-card {
+    padding: 40px 35px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.5s ease;
+    overflow: hidden;
+  }
+
+  .equipment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+
+  .equipment-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(201, 162, 39, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .equipment-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(201, 162, 39, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+  }
+
+  .equipment-card:hover .card-icon {
+    background: var(--gold);
+  }
+
+  .card-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--gold);
+    transition: color 0.3s ease;
+  }
+
+  .equipment-card:hover .card-icon svg {
+    color: var(--black);
+  }
+
+  .card-brand {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .equipment-card:hover .card-brand {
+    color: var(--gold);
+    background: rgba(201, 162, 39, 0.1);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+  }
+
+  .equipment-card:hover .card-title {
+    color: var(--gold);
+  }
+
+  .card-text {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.8;
+    transition: color 0.3s ease;
+  }
+
+  .equipment-card:hover .card-text {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .card-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.5s ease;
+  }
+
+  .equipment-card:hover .card-line {
+    width: 80%;
+  }
+
+  /* CTA */
+  .equipment-cta {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 2;
+  }
+
+  .equipment-cta p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+
+  .equipment-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 50px;
+    background: transparent;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    transition: all 0.4s ease;
+  }
+
+  .equipment-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(201, 162, 39, 0.2);
+  }
+
+  @media (max-width: 1200px) {
+    .equipment-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .equipment {
+      padding: 100px 0;
+    }
+
+    .equipment-title {
+      font-size: 36px;
+    }
+
+    .equipment-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .equipment-brands {
+      gap: 15px;
+    }
+
+    .brand-badge {
+      padding: 20px 30px;
+    }
+
+    .equipment-card {
+      padding: 30px 25px;
+    }
+  }
+</style>

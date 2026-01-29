@@ -26,6 +26,11 @@ const brands = [
     name: 'ekseption',
     tagline: '',
     type: 'ekseption'
+  },
+  {
+    name: 'LUNA BOX',
+    tagline: 'Germany',
+    type: 'lunabox'
   }
 ];
 ---
@@ -89,6 +94,23 @@ const brands = [
         <div class="brand-circle">
           <div class="brand-logo">
             <span class="brand-name ekseption">ekseption</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- LUNA BOX -->
+      <div class="brand-item">
+        <div class="brand-circle">
+          <div class="brand-logo">
+            <div class="lunabox-logo">
+              <span class="luna">LU<span class="luna-n">N</span>A</span>
+              <span class="box">BOX</span>
+              <span class="german-flag">
+                <span class="flag-black"></span>
+                <span class="flag-red"></span>
+                <span class="flag-gold"></span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -256,6 +278,61 @@ const brands = [
     letter-spacing: 1px;
   }
 
+  /* LUNA BOX */
+  .lunabox-logo {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .luna {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 300;
+    color: #333;
+    letter-spacing: 1px;
+  }
+
+  .luna-n {
+    color: #00b5b5;
+    font-weight: 400;
+  }
+
+  .box {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 1px;
+  }
+
+  .german-flag {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4px;
+    height: 18px;
+    width: 6px;
+    overflow: hidden;
+    border-radius: 1px;
+  }
+
+  .german-flag span {
+    flex: 1;
+    width: 100%;
+  }
+
+  .flag-black {
+    background: #000;
+  }
+
+  .flag-red {
+    background: #dd0000;
+  }
+
+  .flag-gold {
+    background: #ffcc00;
+  }
+
   @media (max-width: 992px) {
     .brands-grid {
       gap: 30px;
@@ -288,6 +365,11 @@ const brands = [
     .casmara,
     .fusion,
     .ekseption {
+      font-size: 16px;
+    }
+
+    .luna,
+    .box {
       font-size: 16px;
     }
   }
